@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Izabel Nails</title>
+        <!-- 💅 -->
+        <link rel="icon" type="image/x-icon" href="https://freepngimg.com/icon/download/emoji/1000391-nail-polish-emoji-icon-download-free.png">
+        <link rel="stylesheet" href="main.css">
+
+        <script defer src="imgapi.js" type="module"></script>
+
+        <script defer src="main.js"></script>
+    </head>
+
+    <body>
+        <header>
+            <div class="header left">
+                GETCHA NAILS HERE
+            </div>
+            <div class="header centre">
+                LOGO
+            </div>
+            <div class="header right">
+                <button id="btn-home" class="header-btn first hb-drk" onclick="btnclick(this);">
+                    HOME
+                </button>
+                <button id="btn-gallery" class="header-btn hb-drk" onclick="btnclick(this);">
+                    GALLERY
+                </button>
+                <button id="btn-book" class="header-btn hb-drk" onclick="btnclick(this);">
+                    BOOK
+                </button>
+            </div>
+        </header>
+        <main>
+            <section id="home">
+                <div class="maincontent">
+                    <div class="info">
+                        <div class="infotxt">
+                            Turmoil has engulfed the
+                            Galactic Republic. The taxation
+                            of trade routes to outlying star
+                            systems is in dispute.
+                        </div>
+                        <image class="infoimg" src="info1.png">
+                        </image>
+                    </div>
+                </div> 
+            </section>
+            <section id="gallery" class="hidden">
+                <div class="maincontent">
+                    <div id="gallerycontent" class="gallery">
+                    </div>
+                </div> 
+            </section>
+            <section id="book" class="hidden">
+                <div class="maincontent">
+                    <div class="book">
+                        book
+                    </div>
+                </div>
+            </section>
+        </main>
+    </body>
+</html>
