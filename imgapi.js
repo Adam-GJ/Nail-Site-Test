@@ -15,6 +15,8 @@ async function loadGallery() {
 
         images.forEach(item => {
             // Create gallery item
+            console.log(item);
+            
             const container = document.createElement("div");
             container.classList.add("gallery-item");
 
