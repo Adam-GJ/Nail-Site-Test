@@ -1,0 +1,25 @@
+content:
+  - name: gallery
+    label: Gallery
+    type: file
+    path: data/gallery.json
+    format: json
+    list: true
+    fields:
+      - name: title
+        label: Image title
+        type: string
+        required: true
+
+      - name: image
+        label: Image
+        type: image
+        required: true
+
+      - name: description
+        label: Description
+        type: text
+
+      - name: date
+        label: Date
+        type: date
