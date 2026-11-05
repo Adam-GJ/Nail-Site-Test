@@ -1,60 +1,49 @@
-const gal = document.getElementById('gallerycontent');
 
-const folderId  = "1NRdfRNjotbFWXrz42cvzuzIaPNs4aeDr";
-const apiKey    = "AIzaSyCZ5XT3Y-ivj3mdcehzSF1ixJdOUNVCVfE";
+async function loadGallery() {
+    const gallery = document.getElementById("gallerycontent");
 
-const url =
-    `https://www.googleapis.com/drive/v3/files` +
-    `?q='${folderId}'+in+parents` +
-    `&fields=files(id,name,mimeType)` +
-    `&key=${apiKey}`;
+    try {
+        const response = await fetch("./data/gallery.json");
 
-const response = await fetch(url);
-const data = await response.json();
+        if (!response.ok) {
+            throw new Error("Failed to load gallery JSON");
+        }
 
+        const images = await response.json();
 
-const images = data.files;
+        gallery.innerHTML = "";
 
-images.forEach(file => {
+        images.forEach(item => {
+            // Create gallery item
+            const container = document.createElement("div");
+            container.classList.add("gallery-item");
 
-    const img = document.createElement("img");
+            // Create image
+            const img = document.createElement("img");
+            img.src = item.image;
+            img.alt = item.title || "";
 
-    console.log(file);
+            // Create title
+            const title = document.createElement("h3");
+            title.textContent = item.title;
 
-    // img.src = `https://drive.google.com/uc?export=view&id=${file.id}`;
-    // img.src = `https://drive.usercontent.google.com/download?id=${file.id}`;
-    // img.src = `https://drive.google.com/file/d/${file.id}/view?usp=drive_link`
-    img.src = `https://drive.usercontent.google.com/download?id=${file.id}&export=view`;
-    // img.src = `https://drive.usercontent.google.com/download?id=${file.id}&export=view&authuser=0`
-    img.alt = file.name;
-    // img.loading = "lazy";
-    img.classList.add('gal-img');
+            // Create description
+            const description = document.createElement("p");
+            description.textContent = item.description || "";
 
-    gal.appendChild(img);
+            // Assemble gallery item
+            container.appendChild(img);
+            container.appendChild(title);
+            container.appendChild(description);
 
-    // console.log(`img:       ${img}`);
-    // console.log(`src:       ${img.src}`);
-    // console.log(`complete:  ${img.complete}`);
-    // console.log(`natwidth:  ${img.naturalWidth}`);
-    // console.log(`natheight: ${img.naturalHeight}`);
+            gallery.appendChild(container);
+        });
 
-    img.onload = () => {
-        console.log("Loaded!");
-        console.log("Dimensions:", img.naturalWidth, img.naturalHeight);
-    };
-
-    img.onerror = () => {
-        console.log("Image failed to load!");
-    };
-
-    console.log("Initial state:", img.complete);
-
-});
-
-async function getImages() {
-
-    const response = await fetch("image-list.json");
-    const filenames = await response.json();
-
-    return filenames.map(filename => `images/${filename}`);
+    } catch (error) {
+        console.error("Gallery error:", error);
+        gallery.textContent = "Unable to load gallery.";
+    }
 }
+
+// Load gallery when page is ready
+document.addEventListener("DOMContentLoaded", loadGallery);
