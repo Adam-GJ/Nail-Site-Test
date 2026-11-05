@@ -1,5 +1,6 @@
 
 async function loadGallery() {
+    console.log("Start Loading Gallery");
     const gallery = document.getElementById("gallerycontent");
 
     try {
