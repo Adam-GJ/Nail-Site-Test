@@ -25,7 +25,7 @@ async function loadGallery() {
 
             // Create image
             const img = document.createElement("img");
-            img.src = item.image;
+            img.src = item.image.replace('/', '');
             img.alt = item.title || "";
 
             // Create title
