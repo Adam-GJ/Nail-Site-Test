@@ -13,6 +13,8 @@ async function loadGallery() {
 
         gallery.innerHTML = "";
 
+        console.log(images);
+        
         images.forEach(item => {
             // Create gallery item
             console.log(item);
