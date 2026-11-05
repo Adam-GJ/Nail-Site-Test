@@ -3,7 +3,7 @@ async function loadGallery() {
     const gallery = document.getElementById("gallerycontent");
 
     try {
-        const response = await fetch("./data/gallery.json");
+        const response = await fetch("data/gallery.json");
 
         if (!response.ok) {
             throw new Error("Failed to load gallery JSON");
