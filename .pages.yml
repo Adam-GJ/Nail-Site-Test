@@ -1,6 +1,6 @@
 media:
-  input: images/gallery
-  output: /images/gallery
+  input: images
+  output: /images
 
 content:
   - name: gallery
